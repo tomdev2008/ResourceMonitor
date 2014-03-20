@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="monitor">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="C:/Users/Administrator/AppData/Local/MyEclipse/MyEclipse 10"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="monitor.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="lib/mysql-connector-java-5.1.22-bin.jar"/>
+        <pathelement location="lib/ojdbc6.jar"/>
+        <pathelement location="lib/mybatis-3.2.2.jar"/>
+        <pathelement location="lib/commons-logging-1.1.1.jar"/>
+        <pathelement location="lib/protobuf-java-2.5.0.jar"/>
+        <pathelement location="lib/jfreechart-1.0.14.jar"/>
+        <pathelement location="lib/jcommon-1.0.17.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="monitor.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="ClientWorker">
+        <java classname="com.gcj.dzh.http.ClientWorker" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+    <target name="ConcurrentTest">
+        <java classname="com.gcj.dzh.http.ConcurrentTest" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+    <target name="ConcurrentTest2">
+        <java classname="com.gcj.dzh.http.ConcurrentTest2" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+    <target name="HttpGet">
+        <java classname="com.gcj.dzh.http.HttpGet" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+    <target name="HttpPost">
+        <java classname="com.gcj.dzh.http.HttpPost" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+    <target name="LogProcess">
+        <java classname="com.gcj.dzh.log.LogProcess" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+    <target name="MonitorInfo">
+        <java classname="com.gcj.dzh.main.MonitorInfo" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+    <target name="ProcessInfo">
+        <java classname="com.gcj.dzh.main.ProcessInfo" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+    <target name="PushProxyInfoTest">
+        <java classname="com.gcj.dzh.test.PushProxyInfoTest" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+    <target name="QuerywebMain">
+        <java classname="com.gcj.dzh.main.QuerywebMain" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+    <target name="TestMemory">
+        <java classname="com.gcj.dzh.main.TestMemory" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+    <target name="Traffic">
+        <java classname="com.gcj.dzh.http.Traffic" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+    <target name="Ubamsgserver">
+        <java classname="com.gcj.dzh.main.Ubamsgserver" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+    <target name="UserAnalysysMain">
+        <java classname="com.gcj.dzh.main.UserAnalysysMain" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+    <target name="WorkThread2">
+        <java classname="com.gcj.dzh.http.WorkThread2" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+    <target name="WorkThread3">
+        <java classname="com.gcj.dzh.http.WorkThread3" failonerror="true" fork="yes">
+            <classpath refid="monitor.classpath"/>
+        </java>
+    </target>
+</project>

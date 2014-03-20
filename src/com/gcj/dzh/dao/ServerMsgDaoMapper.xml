@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.gcj.dzh.dao.ServerMsgDao">
+    
+    <insert id="insert_server_monitor" parameterType="com.gcj.dzh.bean.ServerMsgBean">
+        insert into server_monitor(IP,ProcessId,UpdateTime,ProcessName,OneMinsProcs,FiveMinsProcs,FifteenMinsProcs,CPUUsage,IowaitTime,UsedMemory) values(#{localHostIp},#{pid},#{updateTime},#{proceeName},#{oneMinsProcs},#{fiveMinsProcs},#{fifteenMinsProcs},#{cpuUsage},#{iowaitTime},#{memUsage})
+    </insert>
+
+</mapper>
